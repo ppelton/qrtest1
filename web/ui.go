@@ -4,9 +4,12 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strconv"
 
 	"qrtest1.peltonium.net/types"
 )
+
+const PORT int = 8080
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, `
@@ -43,5 +46,6 @@ func StartServer(contentProviders []types.ContentProvider) {
 			}
 		}))
 	}
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Printf("Listening on port %d", PORT)
+	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(PORT), nil))
 }

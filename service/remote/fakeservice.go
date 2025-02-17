@@ -12,10 +12,12 @@ import (
 
 type FakeService struct{}
 
+// Generates a QR code representing the local IP address and listening port
 func (s FakeService) GenerateQRCode() ([]byte, error) {
 	return qrcode.Encode("http://"+getOutboundIP().String()+":8080", qrcode.Medium, 128)
 }
 
+// Returns a fake list of items
 func (s FakeService) GetItems() ([]api.Item, error) {
 	var items = []api.Item{
 		{Id: uuid.NewString(), Name: "test", Description: "desc"},

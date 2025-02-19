@@ -1,0 +1,21 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Item {
+  id: String!
+  name: String!
+}
+
+type Query {
+  items: [Item!]!
+}
+
+input ItemInput {
+  id: String!
+  name: String!
+}
+
+type Mutation {
+  createItem(input: ItemInput!): Item!
+}
